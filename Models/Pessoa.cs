@@ -2,13 +2,19 @@ namespace DesafioProjetoHospedagem.Models;
 
 public class Pessoa
 {
+// Construtor
 
-    // public string Nome {get; set;}
-    // public string Sobrenome {get; set;}
 
-    // public string NomeCompleto {get {
-    //     return Nome + " " + Sobrenome;
-    // }}                                                                                    
+
+
+
+// Propriedades
+    public string Nome {get; set;}
+    public string Sobrenome {get; set;}
+
+    public string NomeCompleto {get {
+        return Nome + " " + Sobrenome;
+    }}                                                                                    
 
 
 
