@@ -15,8 +15,6 @@ public class Pessoa
     }
 
 
-
-
 // Propriedades
     public string Nome {get; set;}
     public string Sobrenome {get; set;}
