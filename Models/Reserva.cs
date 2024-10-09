@@ -3,6 +3,19 @@ namespace DesafioProjetoHospedagem.Models
     public class Reserva
     {
 
+        public Reserva(Suite suiteEscolhida, List<Pessoa> ListaHospedes, DateTime diaInicial, DateTime diaFinal){
+            SuiteEscolhida = suiteEscolhida;
+            Hospedes = ListaHospedes;
+            DataInicial = diaInicial;
+            DataFinal = diaFinal;
+        }
+
+        public Suite SuiteEscolhida {get;set;}
+        public List<Pessoa> Hospedes {get;set;}
+        public DateTime DataInicial {get; set;}
+        public DateTime DataFinal {get; set;}
+
+
         
 
 
