@@ -1,14 +1,16 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Data.Common;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using DesafioProjetoHospedagem.Models;
+Console.OutputEncoding = Encoding.UTF8;
 
 // SETUP - Inicialização de objetos instanciados 
 
-Suite suite1 = new Suite("Presidencial",6, 750.00M);
-Suite suite2 = new Suite("Luxo",4, 450.00M);
+Suite suite1 = new Suite("Magnum",6, 750.00M);
+Suite suite2 = new Suite("Deluxe",4, 450.00M);
 Suite suite3 = new Suite("Advanced",3, 350.00M);
-Suite suite4 = new Suite("Standart",2, 250.00M);
+Suite suite4 = new Suite("Standard",2, 250.00M);
 Suite suite5 = new Suite("Basic",2, 150.00M);
 
 Suite suiteEscolhida = null;
@@ -50,9 +52,9 @@ while (true) {
         }
     }
     try {
-        System.Console.WriteLine($"Cadastro Realizado com Sucesso!");
+        System.Console.WriteLine($"\nCadastro Realizado com Sucesso!");
         Pessoa pessoa = new Pessoa( name, sobrenome);
-        Console.WriteLine(pessoa.NomeCompleto);
+        Console.WriteLine($"{pessoa.NomeCompleto}\n");
 
         ListaHospedes.Add(pessoa);
     }
@@ -85,6 +87,10 @@ System.Console.WriteLine("");
 
 // 2° PARTE - Encontrar acomodações desejadas:
 
+
+DateTime diaFinal;
+DateTime diaInicial;
+
 while (true)
 {
 
@@ -105,14 +111,19 @@ while (true)
                 System.Console.WriteLine("O nome informado não corresponde a nenhuma suíte disponibilizada.\nTente novamente.");
                 continue;
             } else {
+
+                 if (ListaHospedes.Count() > suiteEscolhida.Capacidade){
+                    System.Console.WriteLine($"\nSinto muito mas a Capacidade da Suite não suporta o número de Hóspedes, por favor tente novamente\n");
+                    continue;
+                 }
+
                 break;
             }
         }
     }
         
 
-    DateTime diaFinal;
-    DateTime diaInicial;
+    
 
     while (true){
         System.Console.WriteLine("Informe a data de Chegada:\n(Informe no formato Dia/Mês)");
@@ -147,46 +158,13 @@ while (true)
 
         break;
     }
-
-    Reserva reservaFinalizada = new Reserva(suiteEscolhida, ListaHospedes, diaInicial, diaFinal);
-
-    Console.WriteLine("Reserva criada com sucesso!");
-    Console.WriteLine($"Suite: {reservaFinalizada.SuiteEscolhida.TipoSuite}");
-    Console.WriteLine($"Data de Chegada: {reservaFinalizada.DataInicial.ToString("dd/MM")}");
-    Console.WriteLine($"Data de Saída: {reservaFinalizada.DataFinal.ToString("dd/MM")}");
-    Console.WriteLine($"Número de Hóspedes: {reservaFinalizada.Hospedes.Count}");
-
-
     break;
 }
+    Reserva reservaFinalizada = new Reserva(suiteEscolhida, ListaHospedes, diaInicial, diaFinal);
 
+Console.WriteLine("\nReserva criada com sucesso!");
+Console.WriteLine($" Suite: {reservaFinalizada.SuiteEscolhida.TipoSuite}\n Data de Chegada: {reservaFinalizada.DataInicial.ToString("dd/MM")}\n Data de Saída: {reservaFinalizada.DataFinal.ToString("dd/MM")}\n Valor Diária: {reservaFinalizada.SuiteEscolhida.ValorDiaria}");
 
-
-
-
-
-
-
-
-// Console.OutputEncoding = Encoding.UTF8;
-
-// // Cria os modelos de hóspedes e cadastra na lista de hóspedes
-// List<Pessoa> hospedes = new List<Pessoa>();
-
-// Pessoa p1 = new Pessoa(nome: "Hóspede 1");
-// Pessoa p2 = new Pessoa(nome: "Hóspede 2");
-
-// hospedes.Add(p1);
-// hospedes.Add(p2);
-
-// // Cria a suíte
-// Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
-
-// // Cria uma nova reserva, passando a suíte e os hóspedes
-// Reserva reserva = new Reserva(diasReservados: 5);
-// reserva.CadastrarSuite(suite);
-// reserva.CadastrarHospedes(hospedes);
-
-// // Exibe a quantidade de hóspedes e o valor da diária
-// Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-// Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+Console.WriteLine($" Número de Hóspedes: {reservaFinalizada.ObterQuantidadeHospedes()}");
+Console.WriteLine($" Dias Hospedados: {reservaFinalizada.diasHospedados()}");
+Console.WriteLine($" Valor Total: {reservaFinalizada.CalcularValorDiaria():C}");

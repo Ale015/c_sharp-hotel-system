@@ -34,28 +34,5 @@ namespace DesafioProjetoHospedagem.Models
                 System.Console.WriteLine($"{i + 1} | Tipo da Suíte: {ListaSuitesTotais[i].TipoSuite} | Capacidade: {ListaSuitesTotais[i].Capacidade} | Valor Diária: {ListaSuitesTotais[i].ValorDiaria:C}");
             }
         }
-
-
-
-
-
-
     } 
-
-
-    // public class Suite
-    // {
-    //     public Suite() { }
-
-    //     public Suite(string tipoSuite, int capacidade, decimal valorDiaria)
-    //     {
-    //         TipoSuite = tipoSuite;
-    //         Capacidade = capacidade;
-    //         ValorDiaria = valorDiaria;
-    //     }
-
-    //     public string TipoSuite { get; set; }
-    //     public int Capacidade { get; set; }
-    //     public decimal ValorDiaria { get; set; }
-    // }
 }
