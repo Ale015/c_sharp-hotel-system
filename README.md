@@ -1,19 +1,67 @@
-# DIO - Trilha .NET - Explorando a linguagem C#
-www.dio.me
+# Sistema Simulado de Hospedagem (C#)
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de explorando a linguagem C#, da trilha .NET da DIO.
+# Projeto de Hospedagem de Hotel
 
-## Contexto
-Você foi contratado para construir um sistema de hospedagem, que será usado para realizar uma reserva em um hotel. Você precisará usar a classe Pessoa, que representa o hóspede, a classe Suíte, e a classe Reserva, que fará um relacionamento entre ambos.
+Este é um projeto simples de hospedagem em hotel, criado como parte de um desafio de programação. O sistema permite o cadastro de hóspedes, seleção de suítes, cálculo de diárias, e exibe informações detalhadas da reserva.
 
-O seu programa deverá cálcular corretamente os valores dos métodos da classe Reserva, que precisará trazer a quantidade de hóspedes e o valor da diária, concedendo um desconto de 10% para caso a reserva seja para um período maior que 10 dias.
+## Como Executar o Projeto
 
-## Regras e validações
-1. Não deve ser possível realizar uma reserva de uma suíte com capacidade menor do que a quantidade de hóspedes. Exemplo: Se é uma suíte capaz de hospedar 2 pessoas, então ao passar 3 hóspedes deverá retornar uma exception.
-2. O método ObterQuantidadeHospedes da classe Reserva deverá retornar a quantidade total de hóspedes, enquanto que o método CalcularValorDiaria deverá retornar o valor da diária (Dias reservados x valor da diária).
-3. Caso seja feita uma reserva igual ou maior que 10 dias, deverá ser concedido um desconto de 10% no valor da diária.
+1. Clone este repositório.
+2. Abra o projeto em sua IDE de preferência.
+3. Compile e execute o programa.
 
+## Estrutura do Projeto
 
-![Diagrama de classe estacionamento](diagrama_classe_hotel.png)
+O projeto consiste em quatro classes principais:
 
+1. **Pessoa.cs**: Representa os hóspedes que irão se hospedar.
+2. **Suite.cs**: Representa as suítes disponíveis no hotel.
+3. **Reserva.cs**: Lida com as informações de reservas e cálculos relacionados à hospedagem.
+4. **Program.cs**: O ponto de entrada do programa, onde ocorre a interação com o usuário.
+
+### Funcionalidades do Sistema
+
+- **Cadastro de Hóspedes**: O usuário pode adicionar vários hóspedes à reserva.
+- **Seleção de Suíte**: O usuário escolhe uma suíte dentre as disponíveis no hotel.
+- **Calcular Diárias**: O sistema calcula o valor total com base no número de dias de estadia.
+- **Descontos**: Desconto de 10% aplicado para estadias com mais de 10 dias.
+
+## Exemplo de Uso
+
+```bash
+Quem irá se hospedar?
+Por favor informe o Nome:
+> João
+
+Por favor informe o Sobrenome:
+> Silva
+
+Cadastro Realizado com Sucesso!
+Gostaria de adicionar mais alguém à Hospedagem?
+(Sim/Não)
+> Não
+
+Lista de Suítes Disponíveis:
+1 | Tipo da Suíte: Magnum | Capacidade: 6 | Valor Diária: R$ 750,00
+2 | Tipo da Suíte: Deluxe | Capacidade: 4 | Valor Diária: R$ 450,00
+3 | Tipo da Suíte: Advanced | Capacidade: 3 | Valor Diária: R$ 350,00
+4 | Tipo da Suíte: Standard | Capacidade: 2 | Valor Diária: R$ 250,00
+5 | Tipo da Suíte: Basic | Capacidade: 2 | Valor Diária: R$ 150,00
+
+Por favor informe o Nome da suíte desejada:
+> Magnum
+
+Informe a data de Chegada:
+> 10/10
+
+Informe a data de Saída:
+> 20/10
+
+Reserva criada com sucesso!
+ Suite: Magnum
+ Data de Chegada: 10/10
+ Data de Saída: 20/10
+ Valor Diária: 750,00
+ Número de Hóspedes: 1
+ Dias Hospedados: 10
+ Valor Total: R$ 6.750,00
